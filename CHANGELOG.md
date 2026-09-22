@@ -5,6 +5,40 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-09-22
+
+Sidebar redesign, plus the remaining review nits from opengeos/geolibre-plugins#57.
+
+### Changed
+
+- Sidebar is now an accordion (Area, Species, Quality grade, Date, Observer and
+  keyword, Advanced filters) - one section open at a time, with an icon, a
+  live value preview and a chevron on each heading, instead of a long
+  scrolling form.
+- Iconic taxa and quality grade are now toggle chips instead of a checkbox
+  grid / dropdown. Date has quick presets (last 30 days, this year, last
+  year).
+- The footer shows removable chips for every active filter, a live "About N
+  observations match" estimate (a cheap `per_page=0` request, debounced), and
+  the fetch button now doubles as **Cancel** while a request is in flight.
+- Colour tokens (accent, warning) are now derived from GeoLibre's own resolved
+  `--background` / `--foreground` via `color-mix()`, instead of switching on
+  `prefers-color-scheme`. The OS colour scheme and the app's own light/dark
+  setting can disagree, which previously produced a dark-mode accent chip on
+  a light-mode page.
+- Every element inside the panel now gets `box-sizing: border-box` and
+  `min-width: 0`, so the sidebar no longer fights the host's resize handle
+  (it was jittering while being dragged, from flex children refusing to
+  shrink below their content width).
+- `hasOtherFilter` (the guard for "ignore the Area") now also accepts an
+  annotation filter as a valid narrowing filter, matching taxon ID / place ID
+  / project.
+
+### Removed
+
+- The "For small-to-medium batches, not bulk scraping" note and its link to
+  the API recommended-practices page.
+
 ## [1.4.0] - 2026-09-21
 
 Changes from the review of opengeos/geolibre-plugins#57.
