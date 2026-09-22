@@ -43,7 +43,7 @@ a small photo strip whenever that observation actually has a photo attached
 broken/empty image).
 
 - **Repository:** <https://github.com/Defani/Geolibre-Inaturalist-Extraction-Plugins>
-- **Plugin id:** `geolibre-inaturalist-extractor` · **Version:** 1.3.1
+- **Plugin id:** `geolibre-inaturalist-extractor` ·
 - **License:** GPL-2.0-or-later (see [License](#license))
 - **Sources and references:** see [Credits, sources & references](#credits-sources--references)
 
