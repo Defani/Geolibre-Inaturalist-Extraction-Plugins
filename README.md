@@ -51,6 +51,9 @@ This plugin merges the feature set of the [rinat](https://docs.ropensci.org/rina
 R package and the QGIS "iNaturalist Extractor" plugin into GeoLibre's own
 plugin API, so it isn't just a bounding-box fetcher.
 
+<img width="1920" height="1080" alt="Screenshot 2026-09-22 100207" src="https://github.com/user-attachments/assets/f5b6c13d-685c-4daf-8df9-a2545df21f9c" />
+
+
 ## What it does
 
 | Feature               | What it does                                                                                                                                                                                                                                                                                                                       | API / GeoLibre                     |
