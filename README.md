@@ -4,8 +4,14 @@
 
 **Plugin**
 
-[![Version](https://img.shields.io/badge/version-1.3.1-2ea44f?style=flat-square)](geolibre-inaturalist-extractor/plugin.json)
-[![Plugin ID](https://img.shields.io/badge/id-geolibre--inaturalist--extractor-555555?style=flat-square)](geolibre-inaturalist-extractor/plugin.json)
+![Version](https://img.shields.io/badge/version-1.5.0-2ea44f?style=flat-square)
+
+
+
+
+![Plugin ID](https://img.shields.io/badge/id-geolibre--inaturalist--extractor-555555?style=flat-square)
+
+
 [![Category](https://img.shields.io/badge/category-Data-0b7285?style=flat-square)](https://github.com/opengeos/geolibre-plugins)
 [![Min GeoLibre](https://img.shields.io/badge/GeoLibre-%E2%89%A5%203.0.0-0b7285?style=flat-square)](https://github.com/opengeos/GeoLibre)
 [![Engine](https://img.shields.io/badge/engine-MapLibre_only-396CB2?style=flat-square&logo=maplibre&logoColor=white)](#notes--limitations)
