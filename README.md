@@ -123,7 +123,7 @@ README.md
   {
     "id": "geolibre-inaturalist-extractor",
     "name": "iNaturalist Extractor",
-    "version": "1.3.1",
+    "version": "1.5..0",
     "description": "Fetch georeferenced iNaturalist observations by map view or layer extent, with species, date, observer, quality-grade and advanced (taxon ID, place ID, photo license, project, annotation) filters, and a photo popup.",
     "author": "Defani Arman (Alfitriansyah)",
     "homepage": "https://github.com/Defani/Geolibre-Inaturalist-Extraction-Plugins",
