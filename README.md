@@ -4,7 +4,7 @@
 
 **Plugin**
 
-![Version](https://img.shields.io/badge/version-1.5.0-2ea44f?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.5.1-2ea44f?style=flat-square)
 
 
 
@@ -58,6 +58,23 @@ R package and the QGIS "iNaturalist Extractor" plugin into GeoLibre's own
 plugin API, so it isn't just a bounding-box fetcher.
 
 <img width="1920" height="1080" alt="Screenshot 2026-09-22 100207" src="https://github.com/user-attachments/assets/f5b6c13d-685c-4daf-8df9-a2545df21f9c" />
+
+## Screenshots
+
+![1,000 bird observations around Bandung as a point layer](geolibre-inaturalist-extractor/screenshots/points.jpg)
+*1,000 iNaturalist bird (Aves) observations around Bandung, West Java, fetched
+from the current map view; the status card says how many have a photo.*
+
+![Observation popup with photo and licence](geolibre-inaturalist-extractor/screenshots/popup.jpg)
+*Click a point: photo with its creator and licence, species, observer, date,
+quality grade and a link to the observation.*
+
+![Filter panel with iconic-taxon groups](geolibre-inaturalist-extractor/screenshots/filters.jpg)
+*Area, species or common name, iconic-taxon groups, quality grade, date,
+observer and keyword, and advanced filters.*
+
+These images are also shipped in the release zip (`screenshots/`) for the
+[GeoLibre plugin catalog](https://plugins.geolibre.app).
 
 
 ## What it does
@@ -258,6 +275,60 @@ or redistribute photos, use the **Photo license** filter and check the license
 of each item first. The panel credits "the iNaturalist community" for data and
 photos.
 
+## Tech stack
+
+| Layer | What | Licence / spec |
+| --- | --- | --- |
+| Language | JavaScript (ES module), one self-contained `index.js`, no imports | — |
+| Styling | Plain CSS, classes prefixed `geolibre-inat-`, light and dark themes | — |
+| UI | DOM API; the popup is a DOM overlay positioned with `map.project()` (no bundled `maplibre-gl`) | — |
+| Host | [GeoLibre](https://github.com/opengeos/GeoLibre) ≥ 3.0.0 plugin API (`addMapControl`, `registerRightPanel` / `registerFloatingPanel`, `addGeoJsonLayer`, `getViewBounds`, `getLayerFeatures`) | MIT |
+| Map engine | [MapLibre GL JS](https://maplibre.org), provided by GeoLibre; not bundled | BSD-3-Clause |
+| Data | [iNaturalist API v1](https://api.inaturalist.org/v1/docs/) `GET /v1/observations` (pages of up to 200) and taxon autocomplete | iNaturalist terms; each observation and photo under its observer's licence |
+| Request schema | [iNaturalistAPI](https://github.com/inaturalist/iNaturalistAPI) OpenAPI request schema, used to check every parameter | MIT |
+| Feature set | [rinat](https://docs.ropensci.org/rinat/) R package (`get_inat_obs` arguments) and the QGIS *iNaturalist Extractor* plugin (Jules Grillot) | MIT · GPL-2.0-or-later |
+| Data standard | Darwin Core-style fields (`quality_grade`, `positional_accuracy`, observed date) | TDWG standard |
+| Output format | [GeoJSON (RFC 7946)](https://www.rfc-editor.org/rfc/rfc7946) point layer | IETF |
+| Icons | [Material Symbols](https://fonts.google.com/icons), SVG paths inlined | Apache-2.0 |
+| Build | [esbuild](https://esbuild.github.io) whitespace minify for the release zip; `node --check` for syntax | MIT |
+| Distribution | GitHub Releases (zip + SHA-256), [GeoLibre plugin registry](https://plugins.geolibre.app) | — |
+
+## References
+
+Journal articles on iNaturalist and citizen-science data that informed the
+filters (quality grade, positional accuracy, licences) and their defaults:
+
+1. Di Cecco, G. J., Barve, V., Belitz, M. W., Stucky, B. J., Guralnick, R. P., &
+   Hurlbert, A. H. (2021). Observing the observers: how participants
+   contribute data to iNaturalist and implications for biodiversity science.
+   *BioScience*, 71(11), 1179–1188. <https://doi.org/10.1093/biosci/biab093>
+2. Mesaglio, T., & Callaghan, C. T. (2021). An overview of the history,
+   current contributions and future outlook of iNaturalist in Australia.
+   *Wildlife Research*, 48(4), 289–303. <https://doi.org/10.1071/WR20154>
+3. Callaghan, C. T., Mesaglio, T., Ascher, J. S., Brooks, T. M., Cabras, A. A.,
+   Chandler, M., Cornwell, W. K., et al. (2022). The benefits of contributing
+   to the citizen science platform iNaturalist as an identifier. *PLoS
+   Biology*, 20(11), e3001843. <https://doi.org/10.1371/journal.pbio.3001843>
+4. Chandler, M., See, L., Copas, K., Bonde, A. M. Z., López, B. C.,
+   Danielsen, F., Legind, J. K., Masinde, S., Miller-Rushing, A. J.,
+   Newman, G., Rosemartin, A., & Turak, E. (2017). Contribution of citizen
+   science towards international biodiversity monitoring. *Biological
+   Conservation*, 213, 280–294. <https://doi.org/10.1016/j.biocon.2016.09.004>
+5. Hochachka, W. M., Fink, D., Hutchinson, R. A., Sheldon, D., Wong, W.-K., &
+   Kelling, S. (2012). Data-intensive science applied to broad-scale citizen
+   science. *Trends in Ecology & Evolution*, 27(2), 130–137.
+   <https://doi.org/10.1016/j.tree.2011.11.006>
+6. Wieczorek, J., Bloom, D., Guralnick, R., Blum, S., Döring, M., Giovanni, R.,
+   Robertson, T., & Vieglais, D. (2012). Darwin Core: an evolving
+   community-developed biodiversity data standard. *PLoS ONE*, 7(1), e29715.
+   <https://doi.org/10.1371/journal.pone.0029715>
+7. Heberling, J. M., Miller, J. T., Noesgaard, D., Weingart, S. B., & Schigel, D.
+   (2021). Data integration enables global biodiversity synthesis. *PNAS*,
+   118(6), e2018093118. <https://doi.org/10.1073/pnas.2018093118>
+8. iNaturalist contributors, iNaturalist (2026). *iNaturalist Research-grade
+   Observations*. Occurrence dataset via GBIF.org.
+   <https://doi.org/10.15468/ab3s5x>
+
 ## License
 
 Copyright (c) 2026 Defani Arman (Alfitriansyah).
@@ -277,6 +348,12 @@ code is included.
 The icons (raven and the sidebar section icons) are from Google's [Material
 Symbols](https://fonts.google.com/icons), licensed under Apache-2.0, and are
 inlined as SVG paths.
+
+The Apache-2.0 text ships as
+[`geolibre-inaturalist-extractor/LICENSE-Apache-2.0.txt`](geolibre-inaturalist-extractor/LICENSE-Apache-2.0.txt)
+(see [`THIRD_PARTY_NOTICES.md`](geolibre-inaturalist-extractor/THIRD_PARTY_NOTICES.md)).
+Apache-2.0 is compatible with GPL-3.0, so with this plugin's "or any later
+version" grant the combined work is distributed under GPL-3.0 terms.
 
 ## Disclaimer
 

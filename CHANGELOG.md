@@ -5,6 +5,19 @@ project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.5.1] - 2026-10-29
+
+### Added
+
+- Screenshots for the GeoLibre plugin catalog, shipped in the release zip
+  (`screenshots/`) and listed in the registry entry.
+- `LICENSE-Apache-2.0.txt` and `THIRD_PARTY_NOTICES.md` in the plugin folder and
+  the release zip, for the Apache-2.0 Material Symbols icons inlined in
+  `index.js`.
+- Registry entry: `license` (GPL-2.0-or-later), `repository`, `issues`,
+  release `source`, category `Ecology`.
+- README: screenshots, tech stack and journal references.
+
 ## [1.5.0] - 2026-09-22
 
 Sidebar redesign, plus the remaining review nits from opengeos/geolibre-plugins#57.
